@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="10%p"
+    android:keyHeight="60dp"
+    android:horizontalGap="1dp"
+    android:verticalGap="2dp">
+
+    <!-- Цифры - 10 клавиш по 10% -->
+    <Row>
+        <Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left"/>
+        <Key android:codes="50" android:keyLabel="2"/>
+        <Key android:codes="51" android:keyLabel="3"/>
+        <Key android:codes="52" android:keyLabel="4"/>
+        <Key android:codes="53" android:keyLabel="5"/>
+        <Key android:codes="54" android:keyLabel="6"/>
+        <Key android:codes="55" android:keyLabel="7"/>
+        <Key android:codes="56" android:keyLabel="8"/>
+        <Key android:codes="57" android:keyLabel="9"/>
+        <Key android:codes="48" android:keyLabel="0" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <!-- Й Ц У К Е Н Г Ш Щ З - 10 клавиш по 10% -->
+    <Row>
+        <Key android:codes="1081" android:keyLabel="й" android:keyEdgeFlags="left"/>
+        <Key android:codes="1094" android:keyLabel="ц"/>
+        <Key android:codes="1091" android:keyLabel="у"/>
+        <Key android:codes="1082" android:keyLabel="к"/>
+        <Key android:codes="1077" android:keyLabel="е"/>
+        <Key android:codes="1085" android:keyLabel="н"/>
+        <Key android:codes="1075" android:keyLabel="г"/>
+        <Key android:codes="1096" android:keyLabel="ш"/>
+        <Key android:codes="1097" android:keyLabel="щ"/>
+        <Key android:codes="1079" android:keyLabel="з" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <!-- Ф Ы В А П Р О Л Д Ж - 10 клавиш по 10% -->
+    <Row>
+        <Key android:codes="1092" android:keyLabel="ф" android:keyEdgeFlags="left"/>
+        <Key android:codes="1099" android:keyLabel="ы"/>
+        <Key android:codes="1074" android:keyLabel="в"/>
+        <Key android:codes="1072" android:keyLabel="а"/>
+        <Key android:codes="1087" android:keyLabel="п"/>
+        <Key android:codes="1088" android:keyLabel="р"/>
+        <Key android:codes="1086" android:keyLabel="о"/>
+        <Key android:codes="1083" android:keyLabel="л"/>
+        <Key android:codes="1076" android:keyLabel="д"/>
+        <Key android:codes="1078" android:keyLabel="ж" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <!-- Э Я Ч С М И Т Ь Б Ю - 10 клавиш по 10% -->
+    <Row>
+        <Key android:codes="1101" android:keyLabel="э" android:keyEdgeFlags="left"/>
+        <Key android:codes="1103" android:keyLabel="я"/>
+        <Key android:codes="1095" android:keyLabel="ч"/>
+        <Key android:codes="1089" android:keyLabel="с"/>
+        <Key android:codes="1084" android:keyLabel="м"/>
+        <Key android:codes="1080" android:keyLabel="и"/>
+        <Key android:codes="1090" android:keyLabel="т"/>
+        <Key android:codes="1100" android:keyLabel="ь"/>
+        <Key android:codes="1073" android:keyLabel="б"/>
+        <Key android:codes="1102" android:keyLabel="ю" android:keyEdgeFlags="right"/>
+    </Row>
+
+    <!-- НИЖНИЙ РЯД - 8 клавиш по 12.5% -->
+    <Row android:rowEdgeFlags="bottom">
+        <!-- Shift -->
+        <Key android:codes="-1" android:keyLabel="⇧" android:keyWidth="12.5%p" android:keyEdgeFlags="left"/>
+
+        <!-- Language Switch -->
+        <Key android:codes="-2" android:keyLabel="🌐" android:keyWidth="12.5%p"/>
+
+        <!-- Смайлики -->
+        <Key android:codes="-3" android:keyLabel="😊" android:keyWidth="12.5%p"/>
+
+        <!-- Пробел -->
+        <Key android:codes="32" android:keyLabel="␣" android:keyWidth="12.5%p" android:isRepeatable="true"/>
+
+        <!-- Точка -->
+        <Key android:codes="46" android:keyLabel="." android:keyWidth="12.5%p"/>
+
+        <!-- Символы -->
+        <Key android:codes="-4" android:keyLabel="!?" android:keyWidth="12.5%p"/>
+
+        <!-- Enter -->
+        <Key android:codes="10" android:keyLabel="↵" android:keyWidth="12.5%p"/>
+
+        <!-- Backspace -->
+        <Key android:codes="-5" android:keyLabel="⌫" android:keyWidth="12.5%p" android:keyEdgeFlags="right" android:isRepeatable="true"/>
+    </Row>
+</Keyboard>
