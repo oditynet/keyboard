@@ -5,7 +5,7 @@
     android:horizontalGap="1dp"
     android:verticalGap="2dp">
 
-    <!-- Цифры - 10 клавиш по 10% -->
+    <!-- Цифры -->
     <Row>
         <Key android:codes="49" android:keyLabel="1" android:keyEdgeFlags="left"/>
         <Key android:codes="50" android:keyLabel="2"/>
@@ -19,7 +19,7 @@
         <Key android:codes="48" android:keyLabel="0" android:keyEdgeFlags="right"/>
     </Row>
 
-    <!-- Q W E R T Y U I O P - 10 клавиш по 10% -->
+    <!-- ВЕРХНИЙ РЯД -->
     <Row>
         <Key android:codes="113" android:keyLabel="q" android:keyEdgeFlags="left"/>
         <Key android:codes="119" android:keyLabel="w"/>
@@ -30,10 +30,11 @@
         <Key android:codes="117" android:keyLabel="u"/>
         <Key android:codes="105" android:keyLabel="i"/>
         <Key android:codes="111" android:keyLabel="o"/>
-        <Key android:codes="112" android:keyLabel="p" android:keyEdgeFlags="right"/>
+        <Key android:codes="112" android:keyLabel="p"/>
+
     </Row>
 
-    <!-- A S D F G H J K L ; - 10 клавиш по 10% -->
+    <!-- СРЕДНИЙ РЯД -->
     <Row>
         <Key android:codes="97" android:keyLabel="a" android:keyEdgeFlags="left"/>
         <Key android:codes="115" android:keyLabel="s"/>
@@ -47,7 +48,7 @@
         <Key android:codes="59" android:keyLabel=";" android:keyEdgeFlags="right"/>
     </Row>
 
-    <!-- Z X C V B N M , . / - 10 клавиш по 10% -->
+    <!-- НИЖНИЙ РЯД -->
     <Row>
         <Key android:codes="122" android:keyLabel="z" android:keyEdgeFlags="left"/>
         <Key android:codes="120" android:keyLabel="x"/>
@@ -56,35 +57,18 @@
         <Key android:codes="98" android:keyLabel="b"/>
         <Key android:codes="110" android:keyLabel="n"/>
         <Key android:codes="109" android:keyLabel="m"/>
-        <Key android:codes="44" android:keyLabel=","/>
-        <Key android:codes="46" android:keyLabel="."/>
-        <Key android:codes="47" android:keyLabel="/" android:keyEdgeFlags="right"/>
+        <Key android:codes="44" android:keyLabel="," android:popupCharacters="."/>
+        <Key android:codes="46" android:keyLabel="." android:popupCharacters=","/>
+        <Key android:codes="-5" android:keyLabel="⌫" android:keyEdgeFlags="right" android:isRepeatable="true"/>
     </Row>
 
-    <!-- НИЖНИЙ РЯД - 8 клавиш, но каждая по 12.5% чтобы занять всю ширину -->
+    <!-- НИЖНИЙ СЛУЖЕБНЫЙ РЯД -->
     <Row android:rowEdgeFlags="bottom">
-        <!-- Shift -->
-        <Key android:codes="-1" android:keyLabel="⇧" android:keyWidth="12.5%p" android:keyEdgeFlags="left"/>
-
-        <!-- Language Switch -->
-        <Key android:codes="-2" android:keyLabel="🌐" android:keyWidth="12.5%p"/>
-
-        <!-- Смайлики -->
-        <Key android:codes="-3" android:keyLabel="😊" android:keyWidth="12.5%p"/>
-
-        <!-- Пробел (теперь такой же ширины как и все) -->
-        <Key android:codes="32" android:keyLabel="␣" android:keyWidth="12.5%p" android:isRepeatable="true"/>
-
-        <!-- Точка -->
-        <Key android:codes="46" android:keyLabel="." android:keyWidth="12.5%p"/>
-
-        <!-- Символы -->
-        <Key android:codes="-4" android:keyLabel="!?" android:keyWidth="12.5%p"/>
-
-        <!-- Enter -->
-        <Key android:codes="10" android:keyLabel="↵" android:keyWidth="12.5%p"/>
-
-        <!-- Backspace -->
-        <Key android:codes="-5" android:keyLabel="⌫" android:keyWidth="12.5%p" android:keyEdgeFlags="right" android:isRepeatable="true"/>
+        <Key android:codes="-1" android:keyLabel="⇧" android:keyWidth="10%p" android:keyEdgeFlags="left"/>
+        <Key android:codes="-2" android:keyLabel="🌐" android:keyWidth="10%p"/>
+        <Key android:codes="-4" android:keyLabel="!?" android:keyWidth="10%p" android:popupCharacters="😊😂😍👍🎉"/>
+        <Key android:codes="32" android:keyLabel="␣" android:keyWidth="40%p" android:isRepeatable="true"/>
+        <Key android:codes="46" android:keyLabel="." android:keyWidth="10%p" android:popupCharacters=","/>
+        <Key android:codes="10" android:keyLabel="↵" android:keyWidth="20%p" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>

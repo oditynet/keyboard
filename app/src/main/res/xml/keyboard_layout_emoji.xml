@@ -5,7 +5,7 @@
     android:horizontalGap="1dp"
     android:verticalGap="2dp">
 
-    <!-- Первый ряд смайликов (улыбающиеся) -->
+    <!-- Первый ряд эмодзи -->
     <Row>
         <Key android:codes="128512" android:keyLabel="😀" android:keyEdgeFlags="left"/>
         <Key android:codes="128513" android:keyLabel="😁"/>
@@ -19,7 +19,7 @@
         <Key android:codes="128521" android:keyLabel="😉" android:keyEdgeFlags="right"/>
     </Row>
 
-    <!-- Второй ряд смайликов (разные эмоции) -->
+    <!-- Второй ряд эмодзи -->
     <Row>
         <Key android:codes="128522" android:keyLabel="😊" android:keyEdgeFlags="left"/>
         <Key android:codes="128523" android:keyLabel="😋"/>
@@ -33,55 +33,28 @@
         <Key android:codes="128531" android:keyLabel="😓" android:keyEdgeFlags="right"/>
     </Row>
 
-    <!-- Третий ряд смайликов (грустные и др.) -->
+    <!-- Третий ряд эмодзи -->
     <Row>
-        <Key android:codes="128532" android:keyLabel="😔" android:keyEdgeFlags="left"/>
-        <Key android:codes="128533" android:keyLabel="😕"/>
-        <Key android:codes="128534" android:keyLabel="😖"/>
-        <Key android:codes="128535" android:keyLabel="😗"/>
-        <Key android:codes="128536" android:keyLabel="😘"/>
-        <Key android:codes="128537" android:keyLabel="😙"/>
-        <Key android:codes="128538" android:keyLabel="😚"/>
-        <Key android:codes="128539" android:keyLabel="😛"/>
-        <Key android:codes="128540" android:keyLabel="😜"/>
-        <Key android:codes="128541" android:keyLabel="😝" android:keyEdgeFlags="right"/>
+        <Key android:codes="128076" android:keyLabel="👍" android:keyEdgeFlags="left"/>
+        <Key android:codes="128077" android:keyLabel="👎"/>
+        <Key android:codes="128078" android:keyLabel="👌"/>
+        <Key android:codes="128079" android:keyLabel="✌️"/>
+        <Key android:codes="128080" android:keyLabel="🤞"/>
+        <Key android:codes="128081" android:keyLabel="🤟"/>
+        <Key android:codes="128082" android:keyLabel="🤘"/>
+        <Key android:codes="128083" android:keyLabel="🤙"/>
+        <Key android:codes="128084" android:keyLabel="👈"/>
+        <Key android:codes="128085" android:keyLabel="👉" android:keyEdgeFlags="right"/>
     </Row>
 
-    <!-- Четвертый ряд смайликов (еще эмоции) -->
-    <Row>
-        <Key android:codes="128542" android:keyLabel="😞" android:keyEdgeFlags="left"/>
-        <Key android:codes="128543" android:keyLabel="😟"/>
-        <Key android:codes="128544" android:keyLabel="😠"/>
-        <Key android:codes="128545" android:keyLabel="😡"/>
-        <Key android:codes="128546" android:keyLabel="😢"/>
-        <Key android:codes="128547" android:keyLabel="😣"/>
-        <Key android:codes="128548" android:keyLabel="😤"/>
-        <Key android:codes="128549" android:keyLabel="😥"/>
-        <Key android:codes="128550" android:keyLabel="😦"/>
-        <Key android:codes="128551" android:keyLabel="😧" android:keyEdgeFlags="right"/>
-    </Row>
-
-    <!-- НИЖНИЙ РЯД: Shift, Language, Назад к буквам, Пробел, Точка, Символы, Backspace -->
+    <!-- Нижний служебный ряд -->
     <Row android:rowEdgeFlags="bottom">
-        <!-- Shift (не используется в emoji) -->
-        <Key android:codes="-1" android:keyLabel="⇧" android:keyWidth="12%p" android:keyEdgeFlags="left"/>
-
-        <!-- Language Switch -->
-        <Key android:codes="-2" android:keyLabel="🌐" android:keyWidth="12%p"/>
-
-        <!-- Назад к буквам -->
-        <Key android:codes="-6" android:keyLabel="ABC" android:keyWidth="12%p"/>
-
-        <!-- Пробел -->
-        <Key android:codes="32" android:keyLabel="␣" android:keyWidth="28%p" android:isRepeatable="true"/>
-
-        <!-- Точка -->
-        <Key android:codes="46" android:keyLabel="." android:keyWidth="8%p"/>
-
-        <!-- Символы -->
-        <Key android:codes="-4" android:keyLabel="!?" android:keyWidth="12%p"/>
-
-        <!-- Backspace -->
-        <Key android:codes="-5" android:keyLabel="⌫" android:keyWidth="12%p" android:keyEdgeFlags="right" android:isRepeatable="true"/>
+        <Key android:codes="-1" android:keyLabel="⇧" android:keyWidth="10%p" android:keyEdgeFlags="left"/>
+        <Key android:codes="-2" android:keyLabel="🌐" android:keyWidth="10%p"/>
+        <Key android:codes="-6" android:keyLabel="ABC" android:keyWidth="10%p"/>
+        <Key android:codes="32" android:keyLabel="␣" android:keyWidth="30%p" android:isRepeatable="true"/>
+        <Key android:codes="-4" android:keyLabel="!?" android:keyWidth="10%p" android:popupCharacters="😊😂😍👍🎉"/>
+        <Key android:codes="46" android:keyLabel="." android:keyWidth="10%p"/>
+        <Key android:codes="10" android:keyLabel="↵" android:keyWidth="20%p" android:keyEdgeFlags="right"/>
     </Row>
 </Keyboard>

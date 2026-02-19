@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Основные цвета приложения -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Цвета для клавиатуры - СВЕТЛАЯ ТЕМА -->
+    <color name="keyboard_light_background">#FFE0E0E0</color>
+    <color name="key_light_normal">#FFFFFFFF</color>
+    <color name="key_light_pressed">#FFCCCCCC</color>
+    <color name="key_light_text">#FF000000</color>
+    <color name="key_light_special">#FFFFB74D</color>
+    <color name="key_light_special_pressed">#FFFF9800</color>
+
+    <!-- Цвета для клавиатуры - ТЕМНАЯ ТЕМА -->
+    <color name="keyboard_dark_background">#FF1E1E1E</color>
+    <color name="key_dark_normal">#FF333333</color>
+    <color name="key_dark_pressed">#FF666666</color>
+    <color name="key_dark_text">#FFFFFFFF</color>
+    <color name="key_dark_special">#FFFF6B6B</color>
+    <color name="key_dark_special_pressed">#FFFF4444</color>
+
+    <!-- Цвета для всплывающих подсказок -->
+    <color name="preview_background_light">#CCFFFFFF</color>
+    <color name="preview_text_light">#FF000000</color>
+    <color name="preview_background_dark">#CC333333</color>
+    <color name="preview_text_dark">#FFFFFFFF</color>
+
+    <!-- Цвета для функциональных клавиш -->
+    <color name="shift_normal">#FF4CAF50</color>
+    <color name="shift_active">#FFFFC107</color>
+    <color name="delete_normal">#FFF44336</color>
+    <color name="enter_normal">#FF2196F3</color>
+    <color name="space_normal">#FF9C27B0</color>
+    <color name="language_normal">#FFFF9800</color>
+
+    <!-- Цвета для границ и разделителей -->
+    <color name="key_border_light">#FFBDBDBD</color>
+    <color name="key_border_dark">#FF555555</color>
+
+    <!-- Цвета для текста в настройках -->
+    <color name="settings_background">#FFF5F5F5</color>
+    <color name="settings_text">#FF212121</color>
+    <color name="settings_text_secondary">#FF757575</color>
 </resources>

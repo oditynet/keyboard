@@ -1,79 +1,120 @@
 package com.example.keyboard
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
+import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var prefs: SharedPreferences
-    private lateinit var spinnerLanguage: Spinner
-    private lateinit var switchShowPopup: Switch
-    private lateinit var btnSave: Button
-    private lateinit var btnCancel: Button
+
+    companion object {
+        // КЛЮЧИ ДОЛЖНЫ СОВПАДАТЬ С MyKeyboardService
+        const val PREF_KEY_LANGUAGE = "keyboard_language"
+        const val PREF_KEY_TOUCH_SENSITIVITY = "touch_sensitivity"
+        const val PREF_KEY_USE_CONTEXT = "use_context"
+        const val PREF_KEY_VIBRO = "vibro"
+        const val PREF_KEY_KEY_SIZE = "key_size"
+        const val PREF_KEY_DARK_THEME = "dark_theme"  // добавили для темы
+
+        private const val TAG = "SettingsActivity"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        title = "Настройки клавиатуры"
+        // ВАЖНО: используем ТОЧНО такое же имя файла как в сервисе
+        prefs = getSharedPreferences("keyboard_prefs", Context.MODE_PRIVATE)
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        // Инициализация view
+        val sensitivitySeekBar = findViewById<SeekBar>(R.id.sensitivitySeekBar)
+        val sensitivityValue = findViewById<TextView>(R.id.sensitivityValue)
+        val contextSwitch = findViewById<Switch>(R.id.contextSwitch)
+        val vibroSwitch = findViewById<Switch>(R.id.vibroSwitch)
+            val themeSwitch = findViewById<Switch>(R.id.themeSwitch)
+        val keySizeSpinner = findViewById<Spinner>(R.id.keySizeSpinner)
 
-        // Инициализация
-        spinnerLanguage = findViewById(R.id.spinnerLanguage)
-        switchShowPopup = findViewById(R.id.switchShowPopup)
-        btnSave = findViewById(R.id.btnSave)
-        btnCancel = findViewById(R.id.btnCancel)
+        // Загрузка настроек
+        val sensitivity = prefs.getInt(PREF_KEY_TOUCH_SENSITIVITY, 70)
+        sensitivitySeekBar.progress = sensitivity
+        sensitivityValue.text = "$sensitivity%"
+        Log.d(TAG, "Loaded sensitivity: $sensitivity")
 
-        setupLanguageSpinner()
-        setupShowPopupSwitch()
-        loadCurrentSettings()
+        val useContext = prefs.getBoolean(PREF_KEY_USE_CONTEXT, true)
+        contextSwitch.isChecked = useContext
+        Log.d(TAG, "Loaded context: $useContext")
 
-        btnSave.setOnClickListener {
-            saveSettings()
-            Toast.makeText(this, "Настройки сохранены", Toast.LENGTH_SHORT).show()
-            finish()
+        val vibroValue = prefs.getBoolean(PREF_KEY_VIBRO, true)
+        vibroSwitch.isChecked = vibroValue
+        Log.d(TAG, "Loaded vibro: $vibroValue")
+
+        val darkTheme = prefs.getBoolean(PREF_KEY_DARK_THEME, false)
+        themeSwitch.isChecked = darkTheme
+        Log.d(TAG, "Loaded theme: $darkTheme")
+
+        val keySize = prefs.getInt(PREF_KEY_KEY_SIZE, 1)
+        keySizeSpinner.setSelection(keySize)
+        Log.d(TAG, "Loaded keySize: $keySize")
+
+        // Слушатели
+        sensitivitySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                sensitivityValue.text = "$progress%"
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // Сохраняем только когда перестали крутить
+                prefs.edit().putInt(PREF_KEY_TOUCH_SENSITIVITY, sensitivitySeekBar.progress).apply()
+                Log.d(TAG, "Saved sensitivity: ${sensitivitySeekBar.progress}")
+                Toast.makeText(this@SettingsActivity, "Чувствительность: ${sensitivitySeekBar.progress}%", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        contextSwitch.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit().putBoolean(PREF_KEY_USE_CONTEXT, isChecked).apply()
+            Log.d(TAG, "Saved context: $isChecked")
+            Toast.makeText(this,
+                if (isChecked) "Контекстное предсказание включено"
+                else "Контекстное предсказание отключено",
+                Toast.LENGTH_SHORT).show()
         }
 
-        btnCancel.setOnClickListener {
-            finish()
+        vibroSwitch.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit().putBoolean(PREF_KEY_VIBRO, isChecked).apply()
+            Log.d(TAG, "Saved vibro: $isChecked")
+            Toast.makeText(this,
+                if (isChecked) "Виброотклик включен"
+                else "Виброотклик отключен",
+                Toast.LENGTH_SHORT).show()
         }
-    }
 
-    private fun setupLanguageSpinner() {
-        val languages = arrayOf("Английская (EN)", "Русская (RU)")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, languages)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerLanguage.adapter = adapter
-    }
+        themeSwitch.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit().putBoolean(PREF_KEY_DARK_THEME, isChecked).apply()
+            Log.d(TAG, "Saved theme: $isChecked")
+            Toast.makeText(this,
+                if (isChecked) "Темная тема включена (перезапустите)"
+                else "Светлая тема включена",
+                Toast.LENGTH_SHORT).show()
+        }
 
-    private fun setupShowPopupSwitch() {
-        switchShowPopup.text = "Показывать увеличенную букву при нажатии"
-    }
-
-    private fun loadCurrentSettings() {
-        // Загружаем язык
-        val savedLanguage = prefs.getString(MyKeyboardService.PREF_KEY_LANGUAGE, "en")
-        spinnerLanguage.setSelection(if (savedLanguage == "ru") 1 else 0)
-
-        // Загружаем настройку показа всплывающих подсказок
-        val showPopup = prefs.getBoolean(MyKeyboardService.PREF_KEY_SHOW_POPUP, true)
-        switchShowPopup.isChecked = showPopup
-    }
-
-    private fun saveSettings() {
-        val editor = prefs.edit()
-
-        // Сохраняем язык
-        val language = if (spinnerLanguage.selectedItemPosition == 1) "ru" else "en"
-        editor.putString(MyKeyboardService.PREF_KEY_LANGUAGE, language)
-
-        // Сохраняем показ всплывающих подсказок
-        editor.putBoolean(MyKeyboardService.PREF_KEY_SHOW_POPUP, switchShowPopup.isChecked)
-
-        editor.apply()
+        keySizeSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                prefs.edit().putInt(PREF_KEY_KEY_SIZE, position).apply()
+                Log.d(TAG, "Saved keySize: $position")
+                Toast.makeText(this@SettingsActivity,
+                    when(position) {
+                        0 -> "Маленький размер клавиш"
+                        1 -> "Средний размер клавиш"
+                        2 -> "Большой размер клавиш"
+                        else -> ""
+                    }, Toast.LENGTH_SHORT).show()
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
     }
 }
