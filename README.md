@@ -58,6 +58,17 @@ setxkbmap -model pc105 -layout us,ru -variant ,, -option grp:ctrl_shift_toggle
 
 Либо udev на помозь нам приходит....
 
-
 Клавиши я выложил тут
+
+<href src="https://github.com/oditynet/KeyBut">https://github.com/oditynet/KeyBut
+
+TODO: добавить вторую клавиатуру которая подключится к этой и по 3 проводам будет передавать свои кода . Добавить подсветку светодиодную и реализовать вкл/выкл по кнопкам через кода.
+
+
+### Железо:
+
+Arduino Pro Micro (на чипе ATmega32U4)
+
+
+
 
